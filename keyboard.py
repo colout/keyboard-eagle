@@ -9,7 +9,7 @@ BOARD_X = 385
 BOARD_Y = 119
 f1 = open("1-schematic_page1.scr", "w")
 f2 = open("2-schematic_page2.scr", "w")
-f3 = open("3-schematic_page2.scr", "w")
+f3 = open("3-schematic_page3.scr", "w")
 f4 = open("4-board.scr", "w")
 
 
