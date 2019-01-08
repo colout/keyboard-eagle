@@ -3,10 +3,11 @@ from decimal import Decimal
 
 #Global Static
 UNIT = 19.05
-OFFSET_X = 40.125
-OFFSET_Y = 107.475
-BOARD_X = 385
-BOARD_Y = 119
+BOARD_X = 16 * UNIT + 50
+BOARD_Y = (UNIT * 6)
+OFFSET_X = (BOARD_X / 2) - (16 * UNIT) / 2
+OFFSET_Y = (UNIT * 6) - (UNIT / 2)
+
 f1 = open("1-schematic_page1.scr", "w")
 f2 = open("2-schematic_page2.scr", "w")
 f3 = open("3-schematic_page3.scr", "w")
@@ -160,63 +161,116 @@ LABEL (5.5 2.8) (5.2 2.8);
 LABEL (5.5 2.6) (5.2 2.6);
 LABEL (5.5 2.5) (5.2 2.5);
 
-ADD PINHD-2X25@pinhead (0 0.7);
+
+ADD PINHD-2X5@pinhead (0 1.7);
 NET SW-87 (-.1 1.9) (-.3 1.9);
 NET SW-88 (-.1 1.8) (-.3 1.8);
 NET SW-89 (-.1 1.7) (-.3 1.7);
 NET SW-90 (-.1 1.6) (-.3 1.6);
 NET SW-91 (-.1 1.5) (-.3 1.5);
-NET SW-92 (-.1 1.4) (-.3 1.4);
-NET SW-93 (-.1 1.3) (-.3 1.3);
-NET SW-94 (-.1 1.2) (-.3 1.2);
-NET SW-95 (-.1 1.1) (-.3 1.1);
-NET SW-96 (-.1 1.0) (-.3 1.0);
-NET SW-97 (-.1 0.9) (-.3 0.9);
-NET SW-98 (-.1 0.8) (-.3 0.8);
-NET SW-99 (-.1 0.7) (-.3 0.7);
-NET SW-100 (-.1 0.6) (-.3 0.6);
-NET SW-101 (-.1 0.5) (-.3 0.5);
-NET SW-102 (-.1 0.4) (-.3 0.4);
-NET SW-103 (-.1 0.3) (-.3 0.3);
-NET SW-104 (-.1 0.2) (-.3 0.2);
-NET SW-105 (-.1 0.1) (-.3 0.1);
-NET SW-106 (-.1 0.0) (-.3 0.0);
-NET SW-107 (-.1 -0.1) (-.3 -0.1);
-NET SW-108 (-.1 -0.2) (-.3 -0.2);
-NET SW-109 (-.1 -0.3) (-.3 -0.3);
-NET SW-110 (-.1 -0.4) (-.3 -0.4);
-NET SW-111 (-.1 -0.5) (-.3 -0.5);
+NET PE (.2 1.9) (.4 1.9);
+NET PE (.2 1.8) (.4 1.8);
+NET PE (.2 1.7) (.4 1.7);
+NET PE (.2 1.6) (.4 1.6);
+NET PE (.2 1.5) (.4 1.5);
 
-NET SW-112 (0.2 1.9) (0.4 1.9);
-NET SW-113 (0.2 1.8) (0.4 1.8);
-NET SW-114 (0.2 1.7) (0.4 1.7);
-NET SW-115 (0.2 1.6) (0.4 1.6);
-NET SW-116 (0.2 1.5) (0.4 1.5);
-NET SW-117 (0.2 1.4) (0.4 1.4);
-NET SW-118 (0.2 1.3) (0.4 1.3);
-NET SW-119 (0.2 1.2) (0.4 1.2);
-NET SW-120 (0.2 1.1) (0.4 1.1);
-NET SW-121 (0.2 1.0) (0.4 1.0);
-NET SW-122 (0.2 0.9) (0.4 0.9);
-NET SW-123 (0.2 0.8) (0.4 0.8);
-NET SW-124 (0.2 0.7) (0.4 0.7);
-NET SW-125 (0.2 0.6) (0.4 0.6);
-NET SW-126 (0.2 0.5) (0.4 0.5);
-NET SW-127 (0.2 0.4) (0.4 0.4);
-NET A4 (0.2 0.3) (0.4 0.3);
-NET A5 (0.2 0.2) (0.4 0.2);
-NET SCK (0.2 0.1) (0.4 0.1);
-NET MOSI (0.2 0.0) (0.4 0.0);
-NET MISO (0.2 -0.1) (0.4 -0.1);
-NET TXD (0.2 -0.2) (0.4 -0.2);
-NET RXD (0.2 -0.3) (0.4 -0.3);
-NET DFU (0.2 -0.4) (0.4 -0.4);
+LABEL (-.3 1.9)(-.6 1.9);
+LABEL (-.3 1.8)(-.6 1.8);
+LABEL (-.3 1.7)(-.6 1.7);
+LABEL (-.3 1.6)(-.6 1.6);
+LABEL (-.3 1.5)(-.6 1.5);
+LABEL (.4 1.9)(.4 1.9);
+LABEL (.4 1.8)(.4 1.8);
+LABEL (.4 1.7)(.4 1.7);
+LABEL (.4 1.6)(.4 1.6);
+LABEL (.4 1.5)(.4 1.5);
+
+
+ADD PINHD-2X5@pinhead (0 0.7);
+NET SW-92 (-.1 0.9) (-.3 0.9);
+NET SW-93 (-.1 0.8) (-.3 0.8);
+NET SW-94 (-.1 0.7) (-.3 0.7);
+NET SW-95 (-.1 0.6) (-.3 0.6);
+NET SW-96 (-.1 0.5) (-.3 0.5);
+NET PE (.2 0.9) (.4 0.9);
+NET PE (.2 0.8) (.4 0.8);
+NET PE (.2 0.7) (.4 0.7);
+NET PE (.2 0.6) (.4 0.6);
+NET PE (.2 0.5) (.4 0.5);
+
+LABEL (-.3 0.9)(-.6 0.9);
+LABEL (-.3 0.8)(-.6 0.8);
+LABEL (-.3 0.7)(-.6 0.7);
+LABEL (-.3 0.6)(-.6 0.6);
+LABEL (-.3 0.5)(-.6 0.5);
+LABEL (.4 0.9)(.4 0.9);
+LABEL (.4 0.8)(.4 0.8);
+LABEL (.4 0.7)(.4 0.7);
+LABEL (.4 0.6)(.4 0.6);
+LABEL (.4 0.5)(.4 0.5);
+
+ADD PINHD-2X13@pinhead (0 -0.8);
+NET A4 (-.1 -1.4) (-.3 -1.4);
+NET A5 (-.1 -1.3) (-.3 -1.3);
+NET 13 (-.1 -1.2) (-.3 -1.2);
+NET 30 (-.1 -1.1) (-.3 -1.1);
+NET 27 (-.1 -1.0) (-.3 -1.0);
+NET SCL (-.1 -0.9) (-.3 -0.9);
+NET SDA (-.1 -0.8) (-.3 -0.8);
+NET SCK (-.1 -0.7) (-.3 -0.7);
+NET MOSI (-.1 -0.6) (-.3 -0.6);
+NET MISO (-.1 -0.5) (-.3 -0.5);
+NET RESET (-.1 -0.4) (-.3 -0.4);
+NET EN (-.1 -0.3) (-.3 -0.3);
+NET +3V3_2 (-.1 -0.2) (-.3 -0.2);
+NET PE (.2 -1.4) (.4 -1.4);
+NET PE (.2 -1.3) (.4 -1.3);
+NET PE (.2 -1.2) (.4 -1.2);
+NET PE (.2 -1.1) (.4 -1.1);
+NET PE (.2 -1.0) (.4 -1.0);
+NET PE (.2 -0.9) (.4 -0.9);
+NET PE (.2 -0.8) (.4 -0.8);
+NET TXD (.2 -0.7) (.4 -0.7);
+NET RXD (.2 -0.6) (.4 -0.6);
+NET DFU (.2 -0.5) (.4 -0.5);
+NET BAT (.2 -0.4) (.4 -0.4);
+NET USB (.2 -0.3) (.4 -0.3);
+NET +3V3 (.2 -0.2) (.4 -0.2);
+
+LABEL (-.3 -1.4)(-.6 -1.4);
+LABEL (-.3 -1.3)(-.6 -1.3);
+LABEL (-.3 -1.2)(-.6 -1.2);
+LABEL (-.3 -1.1)(-.6 -1.1);
+LABEL (-.3 -1.0)(-.6 -1.0);
+LABEL (-.3 -0.9)(-.6 -0.9);
+LABEL (-.3 -0.8)(-.6 -0.8);
+LABEL (-.3 -0.7)(-.6 -0.7);
+LABEL (-.3 -0.6)(-.6 -0.6);
+LABEL (-.3 -0.5)(-.6 -0.5);
+LABEL (-.3 -0.4)(-.6 -0.4);
+LABEL (-.3 -0.3)(-.6 -0.3);
+LABEL (-.3 -0.2)(-.6 -0.2);
+
+LABEL (.4 -1.4)(.4 -1.4);
+LABEL (.4 -1.3)(.4 -1.3);
+LABEL (.4 -1.2)(.4 -1.2);
+LABEL (.4 -1.1)(.4 -1.1);
+LABEL (.4 -1.0)(.4 -1.0);
+LABEL (.4 -0.9)(.4 -0.9);
+LABEL (.4 -0.8)(.4 -0.8);
+LABEL (.4 -0.7)(.4 -0.7);
+LABEL (.4 -0.6)(.4 -0.6);
+LABEL (.4 -0.5)(.4 -0.5);
+LABEL (.4 -0.4)(.4 -0.4);
+LABEL (.4 -0.3)(.4 -0.3);
+LABEL (.4 -0.2)(.4 -0.2);
+
 """)
 
 # MCP IO Expanders
 cursor_x = 0
 cursor_y = 0
-for h in range(8):
+for h in range(6):
     name = ("MCP-%s" % (h))
     f2.write("ADD MCP23017SS@adafruit %s (%s %s);\n" % (name, round (cursor_x, 11), round (cursor_y, 11)))
 
@@ -352,9 +406,9 @@ for h in data:
     cursor_x = 0
     cursor_y = cursor_y - 1
 
-f4.write("GRID MM 4.7625 lines on alt MM .1905 MM;\n")
+f4.write("GRID MM 2.54 lines on alt MM 2.54 MM;\n")
 f4.write("MOVE (%smm %smm) (%smm %smm);\n" % (160, 50, BOARD_X, 50))
-f4.write("MOVE (%smm %smm) (%smm %smm);\n" % (BOARD_X / 2, 100, BOARD_X / 2, BOARD_Y))
+f4.write("MOVE (%smm %smm) (%smm %smm);\n" % (round(BOARD_X / 2, 10), 100, round(BOARD_X / 2, 10), round(BOARD_Y, 11)))
 
 cursor_x = OFFSET_X
 cursor_y = OFFSET_Y
@@ -368,7 +422,7 @@ for h in data:
         cursor_x = round(cursor_x + (width / 2.0), 11)
 
         # Generate move command
-        f4.write("MOVE %s (%smm %smm);\n" % (name, cursor_x, cursor_y))
+        f4.write("MOVE %s (%smm %smm);\n" % (name, round(cursor_x, 11), round(cursor_y, 11)))
 
         # Move the cursor to the blank space
         cursor_x = round(cursor_x + (width / 2.0), 11)
