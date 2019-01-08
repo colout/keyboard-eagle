@@ -3,10 +3,10 @@ from decimal import Decimal
 
 #Global Static
 UNIT = 19.05
-BOARD_X = 16 * UNIT + 50
+BOARD_X = (16 * UNIT) + (30.48 * 2) + 4
 BOARD_Y = (UNIT * 6)
 OFFSET_X = (BOARD_X / 2) - (16 * UNIT) / 2
-OFFSET_Y = (UNIT * 6) - (UNIT / 2)
+OFFSET_Y = (UNIT * 6) - (UNIT / 2) 
 
 f1 = open("1-schematic_page1.scr", "w")
 f2 = open("2-schematic_page2.scr", "w")
@@ -100,7 +100,7 @@ LABEL (1.9 2.6) (1.5 2.6);
 LABEL (1.9 2.5) (1.5 2.5);
 LABEL (1.9 2.4) (1.5 2.4);
 
-ADD EC12E_SW (0 4.5);
+ADD EC12E_SW LEFT_WHEEL (0 4.5);
 ADD PE@supply1  (-0.4 4.2);
 NET 16 (-0.3 4.7) (-0.3 4.8);
 NET 15 (-0.5 4.7) (-0.5 4.8);
@@ -112,7 +112,7 @@ LABEL (-0.3 4.8) (-0.3 4.8);
 LABEL (-0.5 4.8) (-0.5 4.8);
 
 
-ADD EC12E_SW (2 4.5);
+ADD EC12E_SW RIGHT_WHEEL (2 4.5);
 ADD PE@supply1  (1.6 4.2);
 NET 7 (1.5 4.7) (1.5 4.8);
 NET 11 (1.7 4.7) (1.7 4.8);
@@ -123,7 +123,7 @@ LABEL (1.5 4.8) (1.5 4.8);
 LABEL (1.7 4.8) (1.7 4.8);
 LABEL (2.7 4.7) (2.7 4.7);
 
-ADD JOYSTICKPTH@adafruit (4 3);
+ADD JOYSTICKPTH@adafruit RIGHT_JOYSTICK (4 3);
 NET +3V3 (3.6 3.4) (3.5 3.4);
 NET A0 (3.6 3.3) (3.5 3.3);
 NET PE (3.6 3.2) (3.5 3.2);
@@ -143,7 +143,7 @@ LABEL (3.5 2.5) (3.2 2.5);
 
 
 
-ADD JOYSTICKPTH@adafruit (6 3);
+ADD JOYSTICKPTH@adafruit LEFT_JOYSTICK (6 3);
 NET +3V3 (5.6 3.4) (5.5 3.4);
 NET A2 (5.6 3.3) (5.5 3.3);
 NET PE (5.6 3.2) (5.5 3.2);
@@ -209,61 +209,60 @@ LABEL (.4 0.7)(.4 0.7);
 LABEL (.4 0.6)(.4 0.6);
 LABEL (.4 0.5)(.4 0.5);
 
-ADD PINHD-2X13@pinhead (0 -0.8);
-NET A4 (-.1 -1.4) (-.3 -1.4);
-NET A5 (-.1 -1.3) (-.3 -1.3);
-NET 13 (-.1 -1.2) (-.3 -1.2);
-NET 30 (-.1 -1.1) (-.3 -1.1);
-NET 27 (-.1 -1.0) (-.3 -1.0);
-NET SCL (-.1 -0.9) (-.3 -0.9);
-NET SDA (-.1 -0.8) (-.3 -0.8);
-NET SCK (-.1 -0.7) (-.3 -0.7);
-NET MOSI (-.1 -0.6) (-.3 -0.6);
-NET MISO (-.1 -0.5) (-.3 -0.5);
-NET RESET (-.1 -0.4) (-.3 -0.4);
-NET EN (-.1 -0.3) (-.3 -0.3);
-NET +3V3_2 (-.1 -0.2) (-.3 -0.2);
-NET PE (.2 -1.4) (.4 -1.4);
-NET PE (.2 -1.3) (.4 -1.3);
-NET PE (.2 -1.2) (.4 -1.2);
-NET PE (.2 -1.1) (.4 -1.1);
-NET PE (.2 -1.0) (.4 -1.0);
-NET PE (.2 -0.9) (.4 -0.9);
-NET PE (.2 -0.8) (.4 -0.8);
-NET TXD (.2 -0.7) (.4 -0.7);
-NET RXD (.2 -0.6) (.4 -0.6);
-NET DFU (.2 -0.5) (.4 -0.5);
-NET BAT (.2 -0.4) (.4 -0.4);
-NET USB (.2 -0.3) (.4 -0.3);
-NET +3V3 (.2 -0.2) (.4 -0.2);
+ADD PINHD-1x25@pinhead (-1 -0.8);
+NET A4 (-1.1 -2.0) (-1.3 -2.0);
+NET PE (-1.1 -1.9) (-1.3 -1.9);
+NET A5 (-1.1 -1.8) (-1.3 -1.8);
+NET PE (-1.1 -1.7) (-1.3 -1.7);
+NET 13 (-1.1 -1.6) (-1.3 -1.6);
+NET PE (-1.1 -1.5) (-1.3 -1.5);
+NET 30 (-1.1 -1.4) (-1.3 -1.4);
+NET PE (-1.1 -1.3) (-1.3 -1.3);
+NET 27 (-1.1 -1.2) (-1.3 -1.2);
+NET PE (-1.1 -1.1) (-1.3 -1.1);
+NET SCL (-1.1 -1.0) (-1.3 -1.0);
+NET PE (-1.1 -0.9) (-1.3 -0.9);
+NET MOSI (-1.1 -0.8) (-1.3 -0.8);
+NET MISO (-1.1 -0.7) (-1.3 -0.7);
+NET RESET (-1.1 -0.6) (-1.3 -0.6);
+NET EN (-1.1 -0.5) (-1.3 -0.5);
+NET +3V3_2 (-1.1 -0.4) (-1.3 -0.4);
+NET PE (-1.1 -0.3) (-1.3 -0.3);
+NET PE (-1.1 -0.2) (-1.3 -0.2);
+NET PE (-1.1 -0.1) (-1.3 -0.1);
+NET TXD (-1.1 0.0) (-1.3 0.0);
+NET RXD (-1.1 0.1) (-1.3 0.1);
+NET DFU (-1.1 0.2) (-1.3 0.2);
+NET BAT (-1.1 0.3) (-1.3 0.3);
+NET USB (-1.1 0.4) (-1.3 0.4);
+NET +3V3 (-1.1 0.5) (-1.3 0.5);
 
-LABEL (-.3 -1.4)(-.6 -1.4);
-LABEL (-.3 -1.3)(-.6 -1.3);
-LABEL (-.3 -1.2)(-.6 -1.2);
-LABEL (-.3 -1.1)(-.6 -1.1);
-LABEL (-.3 -1.0)(-.6 -1.0);
-LABEL (-.3 -0.9)(-.6 -0.9);
-LABEL (-.3 -0.8)(-.6 -0.8);
-LABEL (-.3 -0.7)(-.6 -0.7);
-LABEL (-.3 -0.6)(-.6 -0.6);
-LABEL (-.3 -0.5)(-.6 -0.5);
-LABEL (-.3 -0.4)(-.6 -0.4);
-LABEL (-.3 -0.3)(-.6 -0.3);
-LABEL (-.3 -0.2)(-.6 -0.2);
-
-LABEL (.4 -1.4)(.4 -1.4);
-LABEL (.4 -1.3)(.4 -1.3);
-LABEL (.4 -1.2)(.4 -1.2);
-LABEL (.4 -1.1)(.4 -1.1);
-LABEL (.4 -1.0)(.4 -1.0);
-LABEL (.4 -0.9)(.4 -0.9);
-LABEL (.4 -0.8)(.4 -0.8);
-LABEL (.4 -0.7)(.4 -0.7);
-LABEL (.4 -0.6)(.4 -0.6);
-LABEL (.4 -0.5)(.4 -0.5);
-LABEL (.4 -0.4)(.4 -0.4);
-LABEL (.4 -0.3)(.4 -0.3);
-LABEL (.4 -0.2)(.4 -0.2);
+LABEL (-1.1 -2.0) (-1.5 -2.0);
+LABEL (-1.1 -1.9) (-1.5 -1.9);
+LABEL (-1.1 -1.8) (-1.5 -1.8);
+LABEL (-1.1 -1.7)(-1.5 -1.7);
+LABEL (-1.1 -1.6)(-1.5 -1.6);
+LABEL (-1.1 -1.5)(-1.5 -1.5);
+LABEL (-1.1 -1.4)(-1.5 -1.4);
+LABEL (-1.1 -1.3)(-1.5 -1.3);
+LABEL (-1.1 -1.2)(-1.5 -1.2);
+LABEL (-1.1 -1.1)(-1.5 -1.1);
+LABEL (-1.1 -1.0)(-1.5 -1.0);
+LABEL (-1.1 -0.9)(-1.5 -0.9);
+LABEL (-1.1 -0.8)(-1.5 -0.8);
+LABEL (-1.1 -0.7)(-1.5 -0.7);
+LABEL (-1.1 -0.6)(-1.5 -0.6);
+LABEL (-1.1 -0.5)(-1.5 -0.5);
+LABEL (-1.1 -0.4)(-1.5 -0.4);
+LABEL (-1.1 -0.3)(-1.5 -0.3);
+LABEL (-1.1 -0.2)(-1.5 -0.2);
+LABEL (-1.1 -0.1)(-1.5 -0.1);
+LABEL (-1.1 0.0)(-1.5 0.0);
+LABEL (-1.1 0.1)(-1.5 0.1);
+LABEL (-1.1 0.2)(-1.5 0.2);
+LABEL (-1.1 0.3)(-1.5 0.3);
+LABEL (-1.1 0.4)(-1.5 0.4);
+LABEL (-1.1 0.5)(-1.5 0.5);
 
 """)
 
@@ -406,9 +405,27 @@ for h in data:
     cursor_x = 0
     cursor_y = cursor_y - 1
 
-f4.write("GRID MM 2.54 lines on alt MM 2.54 MM;\n")
+
 f4.write("MOVE (%smm %smm) (%smm %smm);\n" % (160, 50, BOARD_X, 50))
 f4.write("MOVE (%smm %smm) (%smm %smm);\n" % (round(BOARD_X / 2, 10), 100, round(BOARD_X / 2, 10), round(BOARD_Y, 11)))
+
+
+f4.write("MOVE LEFT_WHEEL (%smm %smm);\n" % (round(25.4 / 2, 11) + 1, 
+                                                round(BOARD_Y, 11) - round(25.4 / 2, 11) - 1))
+f4.write("MOVE RIGHT_WHEEL (%smm %smm);\n" % (round(BOARD_X ,11) - round(25.4 / 2, 11) - 1, 
+                                                round(BOARD_Y, 11) - round(25.4 / 2, 11) - 1))
+
+f4.write("MOVE LEFT_JOYSTICK (%smm %smm);\n" % (round((30.48 / 2) + 1, 11), 
+                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 30.48 - 10))
+f4.write("MOVE RIGHT_JOYSTICK (%smm %smm);\n" % (round(BOARD_X ,11) - round(30.48 / 2, 11) - 1, 
+                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 30.48 - 10))
+
+f4.write("MIRROR JP1;\n")
+f4.write("MIRROR JP2;\n")
+f4.write("MOVE JP1 (-33.02mm 314.96mm);\n")
+f4.write("MOVE JP2 (-27.94mm 292.10mm);\n")
+f4.write("ROTATE JP1; ROTATE JP1;\n")
+f4.write("ROTATE JP2; ROTATE JP2;\n")
 
 cursor_x = OFFSET_X
 cursor_y = OFFSET_Y
@@ -423,8 +440,12 @@ for h in data:
 
         # Generate move command
         f4.write("MOVE %s (%smm %smm);\n" % (name, round(cursor_x, 11), round(cursor_y, 11)))
+        f4.write("ROTATE %s;\n" % (name))
+        f4.write("ROTATE %s;\n" % (name))
 
         # Move the cursor to the blank space
         cursor_x = round(cursor_x + (width / 2.0), 11)
     cursor_x = OFFSET_X
     cursor_y = round(cursor_y - UNIT, 11)
+
+    f4.write("GRID MM 2.54 lines on alt MM 2.54 MM;\n")
