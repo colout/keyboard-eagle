@@ -67,8 +67,15 @@ NET 11 (1.9 2.9) (1.6 2.9);
 NET 13 (1.9 2.8) (1.6 2.8);
 NET 30 (1.9 2.7) (1.6 2.7);
 NET 27 (1.9 2.6) (1.6 2.6);
-NET SCL (1.9 2.5) (1.6 2.5);
-NET SDA (1.9 2.4) (1.6 2.4);
+NET SCL (1.9 2.5) (1.3 2.5);
+NET SDA (1.9 2.4) (1.3 2.4);
+
+ADD +3V3@supply1 (1.0 2.8);
+ADD +3V3@supply1 (1.0 2.3);
+NET SCL (1.4 2.5)(1.4 2.7);
+NET SDA (1.4 2.4)(1.4 2.2);
+ADD R-US_0204/5@adafruit (1.2 2.7);
+ADD R-US_0204/5@adafruit (1.2 2.2);
 
 LABEL (-.4 3.7) (-.6 3.7);
 LABEL (-.4 3.6) (-.6 3.6);
@@ -97,8 +104,8 @@ LABEL (1.9 2.9) (1.5 2.9);
 LABEL (1.9 2.8) (1.5 2.8);
 LABEL (1.9 2.7) (1.5 2.7);
 LABEL (1.9 2.6) (1.5 2.6);
-LABEL (1.9 2.5) (1.5 2.5);
-LABEL (1.9 2.4) (1.5 2.4);
+LABEL (1.3 2.5) (1.1 2.5);
+LABEL (1.3 2.4) (1.1 2.4);
 
 ADD EC12E_SW LEFT_WHEEL (0 4.5);
 ADD PE@supply1  (-0.4 4.2);
@@ -229,13 +236,12 @@ NET EN (-1.1 -0.5) (-1.3 -0.5);
 NET +3V3_2 (-1.1 -0.4) (-1.3 -0.4);
 NET PE (-1.1 -0.3) (-1.3 -0.3);
 NET PE (-1.1 -0.2) (-1.3 -0.2);
-NET PE (-1.1 -0.1) (-1.3 -0.1);
-NET TXD (-1.1 0.0) (-1.3 0.0);
-NET RXD (-1.1 0.1) (-1.3 0.1);
-NET DFU (-1.1 0.2) (-1.3 0.2);
-NET BAT (-1.1 0.3) (-1.3 0.3);
-NET USB (-1.1 0.4) (-1.3 0.4);
-NET +3V3 (-1.1 0.5) (-1.3 0.5);
+NET TXD (-1.1 -0.1) (-1.3 -0.1);
+NET RXD (-1.1 0.0) (-1.3 0.0);
+NET DFU (-1.1 0.1) (-1.3 0.1);
+NET BAT (-1.1 0.2) (-1.3 0.2);
+NET USB (-1.1 0.3) (-1.3 0.3);
+NET +3V3 (-1.1 0.4) (-1.3 0.4);
 
 LABEL (-1.1 -2.0) (-1.5 -2.0);
 LABEL (-1.1 -1.9) (-1.5 -1.9);
@@ -262,7 +268,25 @@ LABEL (-1.1 0.1)(-1.5 0.1);
 LABEL (-1.1 0.2)(-1.5 0.2);
 LABEL (-1.1 0.3)(-1.5 0.3);
 LABEL (-1.1 0.4)(-1.5 0.4);
-LABEL (-1.1 0.5)(-1.5 0.5);
+
+
+ADD PINHD-1X2@pinhead (2 1);
+NET MCP_INT (1.9 1.1) (1.6 1.1);
+NET 27 (1.9 1.0) (1.6 1.0);
+
+LABEL (1.6 1.1) (1.2 1.1);
+LABEL (1.6 1.0) (1.4 1.0);
+
+ADD FH12-12S-0.5SH (3.7 1.3);
+NET +3V3 (3.6 1.8) (3.5 1.8);
+NET MISO (3.6 1.7) (3.5 1.7);
+NET MOSI (3.6 1.6) (3.5 1.6);
+NET PE (3.6 0.7) (3.5 0.7);
+
+LABEL (3.5 1.8)(3.2 1.8);
+LABEL (3.5 1.7)(3.2 1.7);
+LABEL (3.5 1.6)(3.2 1.6);
+LABEL (3.5 0.7)(3.2 0.7);
 
 """)
 
@@ -315,6 +339,27 @@ for h in range(6):
                                                     round (cursor_y - .8, 11), 
                                                     round (cursor_x - .9, 11), 
                                                     round (cursor_y - (i * .1) - .4, 11)))
+    # Reset NET
+    f2.write("NET MCP_INT (%s %s) (%s %s);\n" % (round (cursor_x - .5, 11), 
+                                            round (cursor_y + .4, 11), 
+                                            round (cursor_x - .6, 11), 
+                                            round (cursor_y + .4, 11)))
+
+    f2.write("LABEL (%s %s) (%s %s);\n" % (round (cursor_x - .6, 11), 
+                                            round (cursor_y + .4, 11), 
+                                            round (cursor_x - 1.0, 11), 
+                                            round (cursor_y + .4, 11))) 
+
+    # Interrupt NET
+    f2.write("NET MCP_INT (%s %s) (%s %s);\n" % (round (cursor_x - .5, 11), 
+                                            round (cursor_y + .4, 11), 
+                                            round (cursor_x - .6, 11), 
+                                            round (cursor_y + .4, 11)))
+
+    f2.write("LABEL (%s %s) (%s %s);\n" % (round (cursor_x - .6, 11), 
+                                            round (cursor_y + .4, 11), 
+                                            round (cursor_x - 1.0, 11), 
+                                            round (cursor_y + .4, 11))) 
 
     # I2C Pins
     f2.write("NET SCL (%s %s) (%s %s);\n" % (round (cursor_x - .5, 11), 
@@ -415,10 +460,12 @@ f4.write("MOVE LEFT_WHEEL (%smm %smm);\n" % (round(25.4 / 2, 11) + 1,
 f4.write("MOVE RIGHT_WHEEL (%smm %smm);\n" % (round(BOARD_X ,11) - round(25.4 / 2, 11) - 1, 
                                                 round(BOARD_Y, 11) - round(25.4 / 2, 11) - 1))
 
+# Joystick X is centered on the side buffer size with 1mm of offset from side.  
+# Joystick Y (from top) is joystick width + buffer + scroll wheel height + another offset
 f4.write("MOVE LEFT_JOYSTICK (%smm %smm);\n" % (round((30.48 / 2) + 1, 11), 
-                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 30.48 - 10))
+                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 25.4 - 20))
 f4.write("MOVE RIGHT_JOYSTICK (%smm %smm);\n" % (round(BOARD_X ,11) - round(30.48 / 2, 11) - 1, 
-                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 30.48 - 10))
+                                                round(BOARD_Y, 11) - round(30.48 / 2, 11) - 2 - 25.4 - 20))
 
 f4.write("MIRROR JP1;\n")
 f4.write("MIRROR JP2;\n")
@@ -449,3 +496,10 @@ for h in data:
     cursor_y = round(cursor_y - UNIT, 11)
 
     f4.write("GRID MM 2.54 lines on alt MM 2.54 MM;\n")
+
+
+    f4.write("HOLE 2mm (%smm %smm);\n" % (2, -40 - 21))
+    f4.write("HOLE 2mm (%smm %smm);\n" % (2, -40 - 45))
+    f4.write("HOLE 2mm (%smm %smm);\n" % (95, -40 - 21))
+    f4.write("HOLE 2mm (%smm %smm);\n" % (95, -40 - 45))
+    f4.write("RECT (%smm %smm) (%smm %smm);\n" % (0, -40, 98, -40 - 70))
